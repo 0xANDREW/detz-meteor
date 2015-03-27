@@ -1,0 +1,72 @@
+template(name='wrapper')
+  .container-fluid
+    +flashMessages
+
+    ul.nav.nav-pills
+      li
+        a(href='/') Debts
+      li
+        a(href='/people') People
+  
+    +yield
+
+template(name='person_list')
+  .row
+    a(href='/people/new') New Person
+
+  +each people
+    .row
+      .col-md-2
+        input.last-name.form-control.input-sm(value='{{ last_name }}')
+      .col-md-2
+        input.first-name.form-control.input-sm(value='{{ first_name }}')
+      .col-md-2
+        button.delete.btn.btn-danger Delete
+
+template(name='debt_list')
+  h1 Total: {{ total_owed }}
+
+  .row
+    button.new-debt.btn.btn-primary New Debt
+
+  .row
+    .col-md-2 Description
+    .col-md-2 Person
+    .col-md-2 Amount
+    .col-md-2 Date
+    .col-md-1 Paid
+
+  #debts
+    +each debts
+      +debt_row
+
+template(name='person_select')
+  select.person-id.form-control.input-sm
+    option(value='') -- Select --
+
+    +each people
+      option(value='{{ _id }}') {{ last_name }}, {{ first_name }}
+
+template(name='debt_row')
+  input.debt-id(type='hidden' value='{{ _id }}')
+  
+  .row
+    .col-md-2
+      input.description.form-control.input-sm(value='{{ description }}')
+    .col-md-2
+      +person_select(people=people_helper selected='{{ person_id }}')
+    .col-md-2
+      input.amount.form-control.input-sm(value='{{ money amount }}')
+    .col-md-2
+      input.date.datepicker.form-control.input-sm(value='{{ pretty_date date }}')
+    .col-md-1
+      .checkbox
+        label
+          input.paid(type='checkbox')
+    .col-md-3
+      button.copy.btn.btn-default Copy
+      button.delete.btn.btn-danger Delete
+
+template(name='person_form')
+  +quickForm(collection='PEOPLE' id='person_form' type='insert')
+  
