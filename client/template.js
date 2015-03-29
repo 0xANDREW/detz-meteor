@@ -27,8 +27,8 @@ function get_debt_attrs(tpl){
             description: tpl.$('.description').val(),
             person_id: tpl.$('.person-id').val(),
             amount: tpl.$('.amount').val(),
-            paid: tpl.$('.paid').prop('checked'),
-            date: date.length ? date: null
+            paid: tpl.$('.paid').prop('checked')
+            // date: date.length ? date: null
         }
     };
 }

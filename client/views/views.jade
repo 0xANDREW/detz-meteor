@@ -65,7 +65,8 @@ template(name='debt_row')
     .col-md-2
       input.amount.form-control.input-sm(value='{{ money amount }}')
     .col-md-2
-      input.date.datepicker.form-control.input-sm(value='{{ pretty_date date }}')
+      // input.date.datepicker.form-control.input-sm(value='{{ pretty_date date }}')
+      pre {{ pretty_date created_at }}
     .col-md-1
       .checkbox
         label
@@ -86,7 +87,3 @@ template(name='person_row')
       pre {{ money total }}
     .col-md-2
       button.delete.btn.btn-danger Delete
-
-template(name='person_form')
-  +quickForm(collection='PEOPLE' id='person_form' type='insert')
-  
