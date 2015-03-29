@@ -12,16 +12,16 @@ template(name='wrapper')
 
 template(name='person_list')
   .row
-    a(href='/people/new') New Person
+    a.btn.btn-primary.new-person New Person
 
-  +each people
-    .row
-      .col-md-2
-        input.last-name.form-control.input-sm(value='{{ last_name }}')
-      .col-md-2
-        input.first-name.form-control.input-sm(value='{{ first_name }}')
-      .col-md-2
-        button.delete.btn.btn-danger Delete
+  .row
+    .col-md-2 Last Name
+    .col-md-2 First Name
+    .col-md-2 Total      
+
+  #people
+    +each people
+      +person_row
 
 template(name='debt_list')
   h1 Total: {{ total_owed }}
@@ -48,9 +48,9 @@ template(name='person_select')
       option(value='{{ _id }}') {{ last_name }}, {{ first_name }}
 
 template(name='debt_row')
-  input.debt-id(type='hidden' value='{{ _id }}')
-  
   .row
+    input.debt-id(type='hidden' value='{{ _id }}')
+
     .col-md-2
       input.description.form-control.input-sm(value='{{ description }}')
     .col-md-2
@@ -65,6 +65,19 @@ template(name='debt_row')
           input.paid(type='checkbox')
     .col-md-3
       button.copy.btn.btn-default Copy
+      button.delete.btn.btn-danger Delete
+
+template(name='person_row')
+  .row
+    input.person-id(type='hidden' value='{{ _id }}')
+
+    .col-md-2
+      input.last-name.form-control.input-sm(value='{{ last_name }}')
+    .col-md-2
+      input.first-name.form-control.input-sm(value='{{ first_name }}')
+    .col-md-2
+      pre {{ money total }}
+    .col-md-2
       button.delete.btn.btn-danger Delete
 
 template(name='person_form')
