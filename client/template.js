@@ -1,4 +1,10 @@
+FlashMessages.configure({
+    autoHide: false
+});
+
 function get_attrs(tpl){
+    var date = tpl.$('.date').val();
+
     return {
         _id: tpl.$('.debt-id').val(),
         attrs: {
@@ -6,14 +12,17 @@ function get_attrs(tpl){
             person_id: tpl.$('.person-id').val(),
             amount: tpl.$('.amount').val(),
             paid: tpl.$('.paid').prop('checked'),
-            date: tpl.$('.date').val()
+            date: date.length ? date: null
         }
     };
 }
 
 function handle_err(err){
-    console.log(err);
-    FlashMessages.sendError(err);
+    FlashMessages.clear();
+
+    if (err){
+        FlashMessages.sendError(err.message);
+    }
 }
 
 Template.debt_list.events({
