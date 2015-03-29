@@ -27,7 +27,14 @@ template(name='debt_list')
   h1 Total: {{ total_owed }}
 
   .row
-    button.new-debt.btn.btn-primary New Debt
+    .col-md-3
+      .btn-group
+        button.new-debt.btn.btn-primary New Debt
+        
+        +if show_paid
+          a(href='/').show-paid.btn.btn-default Show All
+        +else
+          a(href='/?paid').show-paid.btn.btn-default Show Paid
 
   .row
     .col-md-2 Description
