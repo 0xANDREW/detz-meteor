@@ -1,17 +1,9 @@
 Template.registerHelper('pretty_date', function(date){
-    if (date){
-        return date.toString('yyyy-MM-dd');
-    }
-    
-    return '';
+    return date.toString('yyyy-MM-dd');
 });
 
 Template.registerHelper('money', function(amount){
-    if (amount){
-        return s.sprintf('%.02f', amount);
-    }
-    
-    return '';
+    return s.sprintf('%.02f', amount);
 });
 
 FlashMessages.configure({
@@ -66,7 +58,10 @@ Template.debt_list.events({
     'click .new-debt': function(e){
         var t = Template.instance();
 
-        Blaze.render(Template.debt_row, t.$('#debts')[0]);
+        Blaze.renderWithData(Template.debt_row, {
+            amount: 0,
+            date: new Date()
+        }, t.$('#debts')[0]);
     }
 });
 
