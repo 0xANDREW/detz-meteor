@@ -24,7 +24,17 @@ template(name='person_list')
       +person_row
 
 template(name='debt_list')
-  h1 Total: {{ total_owed }}
+  .row
+    .col-md-2
+      h3 Owed to you:
+    .col-md-2
+      h4 {{ owed_to_you }}
+
+  .row
+    .col-md-2
+      h3 To others:
+    .col-md-2
+      h4 {{ owed_to_others }}
 
   .row
     .col-md-3
