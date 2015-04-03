@@ -28,6 +28,7 @@ function get_debt_attrs(tpl){
             person_id: tpl.$('.person-id').val(),
             amount: tpl.$('.amount').val(),
             paid: tpl.$('.paid').prop('checked'),
+            payment: tpl.$('.payment').prop('checked'),
             date: date.length ? date: null
         }
     };
@@ -156,5 +157,10 @@ Template.debt_row.onRendered(function(){
     if (this.data){
         this.$('.person-id').val(this.data.person_id);
         this.$('.paid').prop('checked', this.data.paid);
+        this.$('.payment').prop('checked', this.data.payment);
+
+        if (this.data.payment){
+            this.$('.row').addClass('bg-warning');
+        }
     }
 });

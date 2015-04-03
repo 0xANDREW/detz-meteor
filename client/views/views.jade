@@ -45,6 +45,7 @@ template(name='debt_list')
     .col-md-2 Person
     .col-md-2 Amount
     .col-md-2 Date
+    .col-md-1 Payment
     .col-md-1 Paid
 
   #debts
@@ -73,10 +74,17 @@ template(name='debt_row')
      .col-md-1
       .checkbox
         label
+          input.payment(type='checkbox')
+     .col-md-1
+      .checkbox
+        label
           input.paid(type='checkbox')
-    .col-md-3
-      button.copy.btn.btn-default Copy
-      button.delete.btn.btn-danger Delete
+    .col-md-2
+      .btn-group
+        button.copy.btn.btn-default(title='Copy')
+          span.glyphicon.glyphicon-copy
+        button.delete.btn.btn-danger(title='Delete')
+          span.glyphicon.glyphicon-trash
 
 template(name='person_row')
   .row
