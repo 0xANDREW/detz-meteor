@@ -26,15 +26,9 @@ template(name='person_list')
 template(name='debt_list')
   .row
     .col-md-2
-      h3 Owed to you:
+      h3 Balance:
     .col-md-2
-      h4 {{ owed_to_you }}
-
-  .row
-    .col-md-2
-      h3 To others:
-    .col-md-2
-      h4 {{ owed_to_others }}
+      h4 {{ balance }}
 
   .row
     .col-md-3
