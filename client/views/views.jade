@@ -65,9 +65,8 @@ template(name='debt_row')
     .col-md-2
       input.amount.form-control.input-sm(value='{{ money amount }}')
     .col-md-2
-      // input.date.datepicker.form-control.input-sm(value='{{ pretty_date date }}')
-      pre {{ pretty_date created_at }}
-    .col-md-1
+      input.date.datepicker.form-control.input-sm(value='{{ pretty_date date }}')
+     .col-md-1
       .checkbox
         label
           input.paid(type='checkbox')
