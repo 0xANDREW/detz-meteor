@@ -12,17 +12,26 @@ template(name='wrapper')
         a(href='/') Debts
       li
         a(href='/people') People
-  
+
+    .spacer
+        
     +yield
 
 template(name='person_list')
   .row
     a.btn.btn-primary.new-person New Person
 
-  .row.hidden-xs
-    .col-md-2 Last Name
-    .col-md-2 First Name
-    .col-md-2 Total      
+  .spacer
+
+  .row.hidden-xs.text-center
+    .col-md-2
+      strong Last Name
+    .col-md-2
+      strong First Name
+    .col-md-2
+      strong Total
+
+  .spacer
 
   #people
     +each people
@@ -45,13 +54,23 @@ template(name='debt_list')
         +else
           a(href='/?paid').show-paid.btn.btn-default Show Paid
 
-  .row.hidden-xs
-    .col-md-2 Description
-    .col-md-2 Person
-    .col-md-2 Amount
-    .col-md-2 Date
-    .col-md-1 Payment
-    .col-md-1 Paid
+  .spacer
+
+  .row.hidden-xs.text-center
+    .col-md-2
+      strong Description
+    .col-md-2
+      strong Person
+    .col-md-2
+      strong Amount
+    .col-md-2
+      strong Date
+    .col-md-1
+      strong Payment
+    .col-md-1
+      strong Paid
+
+  .spacer
 
   #debts
     +each debts
