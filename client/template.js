@@ -55,7 +55,9 @@ Template.person_list.events({
     'click .new-person': function(e){
         var t = Template.instance();
 
-        Blaze.renderWithData(Template.person_row, { total: 0 }, t.$('#people')[0]);
+        Blaze.renderWithData(Template.person_row, {
+            total: 0
+        }, t.$('#people')[0]);
     }
 });
 
@@ -108,6 +110,9 @@ Template.debt_row.events({
 
         if (a._id){
             DEBTS.remove(a._id);
+        }
+        else {
+            Template.instance().$('*').remove();
         }
     }
 });
