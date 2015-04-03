@@ -104,7 +104,7 @@ Template.debt_row.events({
     'click .delete': function(e){
         var a = get_debt_attrs(Template.instance());
 
-        if (a._id){
+        if (a._id && window.confirm('Delete?')){
             DEBTS.remove(a._id);
         }
         else {
@@ -138,7 +138,7 @@ Template.person_row.events({
     'click .delete': function(e){
         var a = get_person_attrs(Template.instance());
 
-        if (a._id){
+        if (a._id && window.confirm('Delete?')){
             PEOPLE.remove(a._id);
         }
     }
